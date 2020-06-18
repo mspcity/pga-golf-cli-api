@@ -1,6 +1,7 @@
 require 'pry'
 require 'rest-client'
 require 'json'
+# require 'open-uri'
 
 require_relative "./pga_golf_api/version"
 require_relative "./pga_golf_api/api.rb"
