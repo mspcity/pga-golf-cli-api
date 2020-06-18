@@ -8,9 +8,12 @@ class CLI
   end
 
   def print_main_menu
-    puts "press 1 to list out players"
-    puts "press 2 to find the player by first name"
-    puts "press 3 to find the player by letter"
+    puts "Wecome to the PGA Golf data"
+    puts ""
+    puts "Press 1 to list all the players"
+    puts "Press 2 to find the player by first name"
+    puts "Press 3 to find the player by letter"
+    puts "Press 4 to find the player by country"
     puts "or type 'exit' to exit the program"
     main_memu
   end
@@ -38,7 +41,11 @@ class CLI
       find_player_by_first_name
     elsif input == "3"
       find_player_by_letter
+    elsif input == "4"
+      find_player_by_country
     elsif input == 'exit'
+      puts ""
+      puts "Good bye"
       exit
     else
       puts "wrong input"
@@ -54,28 +61,40 @@ class CLI
     end
       puts ""
       puts "Please enter the player's number that you want to know more"
+      puts ""
+      puts "Hit 'Enter Key' to go back to main menu"
       puts "or type 'exit' to exit the program"
       player_info
      
   end
   def find_player_by_letter
-    puts "some letter"
+    puts "Please enter some letters start with"
     input = gets.strip.capitalize!
     Player.all.each do |player|
-      if  player.first_name.start_with?(input)
+      if player.first_name.start_with?(input)
         puts "#{player.first_name} #{player.last_name}"
-        
       end
     end
     print_main_menu
   end
 
+  def find_player_by_country
+    puts "Please enter the country:"
+    input = gets.strip.upcase
+    Player.all.each do |player|
+      if player.country.start_with?(input)
+        puts "#{player.first_name} #{player.last_name}"
+      end
+    end
+    print_main_menu
+  end
+
+
   def find_player_by_first_name
-    puts "Please enter the name of an player:"
+    puts "Please enter the name of a player:"
     input = gets.strip.capitalize!
     
       Player.all.each do |player| 
-      # player = Player.all[input]
       if player.first_name == input
         puts "============================================================================================================="
         puts "#{player.first_name} #{player.last_name}"
@@ -88,7 +107,6 @@ class CLI
         puts "Birth Place: #{player.birth_place}"
         puts "College: #{player.college}"
         puts "Turned pro: #{player.turned_pro}"
-        
         puts ""
       end
     end
@@ -111,9 +129,7 @@ class CLI
       puts "Birth Place: #{player.birth_place}"
       puts "College: #{player.college}"
       puts "Turned pro: #{player.turned_pro}"
-      
       puts ""
-      
     end
     print_main_menu
   end
