@@ -2,8 +2,7 @@ class CLI
 
   def launch
     puts ""
-    # API.get_players
-    
+    API.get_players
     print_main_menu
   end
 
@@ -48,7 +47,8 @@ class CLI
       puts "Good bye"
       exit
     else
-      puts "wrong input"
+      puts ""
+      puts "invalid input. Please try again"
       puts ""
       print_main_menu
     end
@@ -67,33 +67,10 @@ class CLI
       player_info
      
   end
-  def find_player_by_letter
-    puts "Please enter some letters start with"
-    input = gets.strip.capitalize!
-    Player.all.each do |player|
-      if player.first_name.start_with?(input)
-        puts "#{player.first_name} #{player.last_name}"
-      end
-    end
-    print_main_menu
-  end
-
-  def find_player_by_country
-    puts "Please enter the country:"
-    input = gets.strip.upcase
-    Player.all.each do |player|
-      if player.country.start_with?(input)
-        puts "#{player.first_name} #{player.last_name}"
-      end
-    end
-    print_main_menu
-  end
-
 
   def find_player_by_first_name
     puts "Please enter the name of a player:"
     input = gets.strip.capitalize!
-    
       Player.all.each do |player| 
       if player.first_name == input
         puts "============================================================================================================="
@@ -113,6 +90,33 @@ class CLI
     print_main_menu
   end
 
+  
+  def find_player_by_letter
+    puts "Please enter some letters start with:"
+    # binding.pry
+    input = gets.strip.capitalize
+    # binding.pry
+    # @person.try(:name)
+
+    Player.all.each do |player|
+      if player.first_name.start_with?(input)
+        puts "#{player.first_name} #{player.last_name}"
+      end
+    end 
+    print_main_menu
+  end
+
+  def find_player_by_country
+    puts "Please enter the country:"
+    input = gets.strip.upcase
+    Player.all.each do |player|
+      if player.country.start_with?(input)
+        puts "#{player.first_name} #{player.last_name}"
+      end
+    end
+    print_main_menu
+  end
+  
   def player_info
     input = gets.strip.to_i
 
