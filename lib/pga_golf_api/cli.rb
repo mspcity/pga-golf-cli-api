@@ -48,7 +48,7 @@ class CLI
       exit
     else
       puts ""
-      puts "invalid input. Please try again"
+      puts "invalid input. Please try again."
       puts ""
       print_main_menu
     end

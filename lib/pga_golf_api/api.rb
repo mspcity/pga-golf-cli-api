@@ -1,9 +1,10 @@
 class API
 
   BASE_URL = "https://api.sportradar.us/golf-t2/"
-  # extra key: xw7qkuaud7nvkmubzcm7zqar
+  # extra key: dtmh35fj7ewphrsk6vfxngm6
+  
   def self.get_players
-    response = RestClient.get(BASE_URL + "profiles/pga/2020/players/profiles.json?api_key=dtmh35fj7ewphrsk6vfxngm6")
+    response = RestClient.get(BASE_URL + "profiles/pga/2020/players/profiles.json?api_key=xw7qkuaud7nvkmubzcm7zqar")
     # response = RestClient.get(BASE_URL + "players/wgr/2020/rankings.json?api_key=nrhemff4kadrvt26cur675zp")
     data = JSON.parse(response)
     
